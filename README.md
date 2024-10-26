@@ -27,7 +27,7 @@ Virtual Environment Setup Commands:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/management_application.git
+   git clone https://github.com/pranav824/management_application.git
    cd management_application
 
 2. Install the dependencies in requirements.txt file
