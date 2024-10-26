@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Management Home</title>
+</head>
+<body>
+    <h1>Employee Management System</h1>
+
+    <button onclick="window.location.href='{% url 'list_employees_view' %}'">View All Employees</button>
+    <button onclick="window.location.href='{% url 'add_employee_view' %}'">Add New Employee</button>
+
+    <h2>Get Details and Attendance</h2>
+    <label for="employee_id">Select Employee ID:</label>
+    <select id="employee_id" onchange="updateLinks()">
+        <option value="">--Select Employee--</option>
+        {% for employee in employees %}
+            <option value="{{ employee.id }}">{{ employee.name }}</option>
+        {% endfor %}
+    </select>
+
+    <div id="links" style="margin-top: 10px;">
+        <button id="details_button" style="display:none;" onclick="window.location.href=''">Get Employee Details</button>
+        <button id="attendance_button" style="display:none;" onclick="window.location.href=''">Get Attendance Records</button>
+    </div>
+
+    <script>
+        function updateLinks() {
+            var employeeId = document.getElementById('employee_id').value;
+            var detailsButton = document.getElementById('details_button');
+            var attendanceButton = document.getElementById('attendance_button');
+            
+            if (employeeId) {
+                detailsButton.style.display = 'inline-block';
+                detailsButton.onclick = function() {
+                    window.location.href = '/employee/' + employeeId + '/';
+                };
+
+                attendanceButton.style.display = 'inline-block';
+                attendanceButton.onclick = function() {
+                    window.location.href = '/attendance/' + employeeId + '/';
+                };
+            } else {
+                detailsButton.style.display = 'none';
+                attendanceButton.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

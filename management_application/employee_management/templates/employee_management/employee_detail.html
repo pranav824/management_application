@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+</head>
+<body>
+    <h1>Employee Details</h1>
+    <p><strong>Name:</strong> {{ employee.name }}</p>
+    <p><strong>Designation:</strong> {{ employee.designation }}</p>
+    <p><strong>Department:</strong> {{ employee.department }}</p>
+    <p><strong>Date of Joining:</strong> {{ employee.date_of_joining }}</p>
+
+    <form action="{% url 'mark_attendance_view' employee.id %}" method="POST">
+        {% csrf_token %}
+        <input type="date" name="date" required>
+        <select name="status" required>
+            <option value="">Select Status</option>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+        <button type="submit">Mark Attendance</button>
+    </form>
+
+    <a href="{% url 'list_employees_view' %}">Back to Employee List</a>
+
+</body>
+</html>

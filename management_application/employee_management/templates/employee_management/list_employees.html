@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List Employees</title>
+</head>
+<body>
+    <h1>List of Employees</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Department</th>
+                <th>Date of Joining</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.designation }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.date_of_joining }}</td>
+                <td>
+                    <button onclick="window.location.href='{% url 'attendance_details_view' employee.id %}'">View Attendance</button>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No employees available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button onclick="window.location.href='{% url 'home' %}'">Back to Home</button>
+</body>
+</html>

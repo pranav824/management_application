@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Attendance for {{ employee.name }}</title>
+</head>
+<body>
+    <h1>Mark Attendance for {{ employee.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Mark Attendance</button>
+    </form>
+    <button onclick="window.location.href='{% url 'list_employees_view' %}'">Back to Employee List</button>
+</body>
+</html>
