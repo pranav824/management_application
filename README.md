@@ -32,7 +32,7 @@ Virtual Environment Setup Commands:
 
 2. Install the dependencies in requirements.txt file
 
-3. Run the follwoing commands:
+3. Run the following commands:
    python manage.py makemigrations
    python manage.py migrate
    python manage.py createsuperuser - to create django admin (optional)
